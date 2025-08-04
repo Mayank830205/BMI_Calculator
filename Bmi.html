@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("img.jfif");
+            background-size: cover;
+            
+        }
+        h1{
+            position: absolute;
+            top: 20%;
+            left: 18%;
+            font-size: 50px;
+            font-weight: 900;
+            color: #fff;
+            font-family:'Lucida Handwriting';
+            text-shadow:2px 2px 10px rgb(241, 245, 3);
+        }
+        #mainbox{
+            width: 21%;
+            height: 440px;
+            background-color:rgba(237, 237, 237, 0.887);
+            border-radius: 15px;
+            text-align: center;
+            padding: 20px;
+            position:absolute;
+            top:10%;
+            left:60%;
+            box-shadow: 0 0 20px 15px red;
+        }
+        #height,#weight{
+            width: 100%;
+            height: 80px;
+            border-radius: 10px;
+            background-color: hsl(0, 0%, 100%);
+            margin-bottom: 20px;
+            padding: 8px 0px 10px 0px ;
+            
+            
+        }
+        input{
+            border: none;
+            outline:none;
+            border-bottom: 2px solid #4f7df9;
+            text-align: center;
+        }
+        p{
+            font-weight: 600;
+           margin: 15px;
+        }
+        button{
+            margin-top: 10px;
+            width: 100%;
+            height: 25px;
+            background-color: blue;
+            color: #fff;
+            font-weight: 600;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        #BMI{
+            width:30%;
+            height:40px;
+            margin: 8px 95px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 20px;
+            color: blue;
+            align-content: center;
+            
+        }
+        #Comment{
+          font-weight: 500; 
+          position: absolute;
+          left: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>SIMPLE BMI<br>CALCULATOR<br>></h1>
+    <div id="mainbox">
+       <h2>BMI Calculator</h2> 
+       <div id="height">
+        <p>Height(cm)</p>
+        <input type="number" id="heightinput">
+       </div>
+       <div id="weight">
+        <p>Weight(Kg)</p>
+        <input type="number" id="weightinput">
+       </div>
+       <button onclick="BMI()">Calculate BMI</button>
+       <div id="result">Your BMI is
+        <br>
+        <div id="BMI">
+
+        </div>
+        </div>
+        <div id="Comment"></div>
+    </div>
+
+    <script type="text/javascript">
+    function BMI(){
+        let height=document.querySelector("#heightinput").value
+        let weight=document.querySelector("#weightinput").value
+        let result=document.querySelector("#BMI")
+        let comm=document.querySelector("#Comment")
+        
+        if(height=="" || weight=="")
+        {
+            alert("Enter height and weight !!!!")
+        }
+        else{
+        let res=(weight/(height**2)*10000).toFixed(2)
+        result.innerText=`${res}`;
+        result.style.color="blue";
+        result.style.backgroundColor=" rgb(163, 178, 148)"
+        
+        if(res<18.5){
+          comm.innerText="Comment : You are Underweight."  
+        }
+        else if(res>=18.5 && res<24.9){
+            comm.innerText="Comment : You are Healthly." 
+        }
+        else if(res>25 && res<29.9){
+            comm.innerText="Comment : You are Overweight."
+        }
+        else{
+            comm.innerText="Comment : You are Obese."
+        }
+    }
+    }
+    </script>
+</body>
+</html>
